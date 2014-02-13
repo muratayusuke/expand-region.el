@@ -85,6 +85,8 @@ This moves point to the next line to include the end of the block"
                    (< (er/point-at-indentation) orig-point))
       (loop do
             (ruby-beginning-of-block)
+            (when (= (progress-beg) (point))
+              (return))
             (setq progress-beg (point))
             (when (= (point) (point-min))
               (return))
